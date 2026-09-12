@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ikgmonxr Portafolio | Senior Software & Luau Architect</title>
+    <title>Ikgmonxr | Senior Software & Web Developer</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,428 +14,449 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#eef2ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            900: '#312e81',
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    
     <!-- FontAwesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Clean tech glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         .dark .glass-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.8);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
         }
+        
         .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .hero-glow {
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 80%);
+            background: radial-gradient(circle at top center, rgba(14, 165, 233, 0.08) 0%, transparent 60%);
+        }
+        .dark .hero-glow {
+            background: radial-gradient(circle at top center, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+        }
+
+        .project-img-wrapper {
+            transition: transform 0.3s ease;
+        }
+        .group:hover .project-img-wrapper {
+            transform: scale(1.05);
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0ea5e9;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0ea5e9;
+        }
+        
+        .reduce-motion * {
+            animation: none !important;
+            transition: none !important;
+            scroll-behavior: auto !important;
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 min-h-screen transition-colors duration-300">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+    <nav class="fixed top-0 left-0 right-0 z-40 glass-card transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-code"></i>
+                <div class="w-11 h-11 rounded-xl shadow-md overflow-hidden group-hover:shadow-brand-500/30 transition-all border-2 border-transparent group-hover:border-brand-400">
+                    <!-- New Avatar Image -->
+                    <img src="https://cdn.discordapp.com/avatars/1267954195982581782/a_5be5a20be150b5f522cdfd7a728de315.png?size=1024" alt="Ikgmonxr Avatar" class="w-full h-full object-cover">
                 </div>
                 <div>
-                    <span class="text-lg font-bold tracking-tight block">Ikgmonxr</span>
-                    <span class="text-xs text-indigo-500 dark:text-indigo-400 font-medium">Senior Architect & Luau Pro</span>
+                    <span class="text-lg font-bold tracking-tight block text-slate-900 dark:text-white">Ikgmonxr</span>
+                    <span class="text-xs text-brand-500 font-medium">Web & Software Dev</span>
                 </div>
             </a>
             <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                <a href="#inicio" class="hover:text-indigo-500 transition-colors">Inicio</a>
-                <a href="#habilidades" class="hover:text-indigo-500 transition-colors">Lenguajes & Luau</a>
-                <a href="#servicios" class="hover:text-indigo-500 transition-colors">Servicios B2B</a>
-                <a href="#proyectos" class="hover:text-indigo-500 transition-colors">Portafolio</a>
-                <a href="#contacto" class="hover:text-indigo-500 transition-colors">Contacto</a>
+                <a href="#home" class="hover:text-brand-500 transition-colors">Home</a>
+                <a href="#skills" class="hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-brand-500 transition-colors">Current Work</a>
+                <a href="#contact" class="hover:text-brand-500 transition-colors">Contact</a>
             </div>
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-indigo-100 dark:hover:bg-slate-700 transition-colors" title="Cambiar Tema">
-                    <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400" title="Toggle Theme">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
                 </button>
-                <a href="#contacto" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
-                    Contratar Servicios
-                </a>
+                <!-- Settings Gear -->
+                <button onclick="toggleSettings()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400" title="Settings">
+                    <i class="fa-solid fa-gear hover:rotate-90 transition-transform duration-300"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <header id="inicio" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <header id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
         <div class="absolute inset-0 hero-glow pointer-events-none -z-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-600 dark:text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse">
-                <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                <span>Disponible para proyectos enterprise, Web y Metaversos</span>
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800/50 text-brand-600 dark:text-brand-400 text-xs font-semibold mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span>Available for New Projects</span>
             </div>
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8">
-                Ingeniería de Software de Élite, <br>
-                <span class="gradient-text">Luau Avanzado & Full-Stack Mastery</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight mb-6 text-slate-900 dark:text-white">
+                Elite Software Solutions, <br>
+                <span class="gradient-text">Web Dev & Architecture</span>
             </h1>
-            <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-                Transformo requisitos empresariales complejos en soluciones digitales robustas y de ultra bajo rendimiento. Con más de <strong>7 años de experiencia</strong> en el ecosistema tecnológico, desarrollo software multiplataforma, sistemas hiper-optimizados en Luau y experiencias web vanguardistas.
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+                Specialized in web development, Python, JavaScript, Lua and Luau. Building high-performance bots, automated systems, and clean, scalable web platforms.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#proyectos" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base shadow-xl shadow-indigo-600/30 transition-all text-center">
-                    Ver Proyectos <i class="fa-solid fa-arrow-right ml-2"></i>
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm shadow-lg shadow-brand-500/20 transition-all text-center">
+                    View My Work
                 </a>
-                <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-base transition-all text-center">
-                    Solicitar Cotización B2B
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 font-medium text-sm transition-all text-center">
+                    Contact Me
                 </a>
-            </div>
-
-            <!-- Stats Bar with 7 Years Experience -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-20">
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="text-3xl font-extrabold text-indigo-500 mb-1">+85</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Proyectos Exitosos</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="text-3xl font-extrabold text-purple-500 mb-1">99.9%</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Optimización Luau & Web</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="text-3xl font-extrabold text-pink-500 mb-1">7 Años</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Experiencia Técnica</div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <div class="text-3xl font-extrabold text-indigo-500 mb-1">100%</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Satisfacción B2B</div>
-                </div>
             </div>
         </div>
     </header>
 
-    <section id="habilidades" class="py-20 bg-slate-100/50 dark:bg-slate-900/30">
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Technologies & Languages</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Mastery over a wide array of modern languages and tools for bot development, web architecture, and virtual environments.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
+                <!-- Comprehensive Language List -->
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-code text-brand-500 mr-2"></i> Luau
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-moon text-indigo-500 mr-2"></i> Lua
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-python text-yellow-500 mr-2"></i> Python
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-js text-yellow-400 mr-2"></i> JavaScript
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-file-code text-blue-500 mr-2"></i> TypeScript
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-html5 text-orange-500 mr-2"></i> HTML5
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-css3-alt text-blue-600 mr-2"></i> CSS3
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-wind text-teal-400 mr-2"></i> Tailwind CSS
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-react text-cyan-400 mr-2"></i> React
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-node-js text-green-500 mr-2"></i> Node.js
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-c text-purple-500 mr-2"></i> C++ / C#
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-database text-slate-500 mr-2"></i> SQL & NoSQL
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-git-alt text-red-500 mr-2"></i> Git
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-brands fa-docker text-blue-500 mr-2"></i> Docker
+                </span>
+                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
+                    <i class="fa-solid fa-robot text-indigo-400 mr-2"></i> Discord API
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-slate-100/50 dark:bg-slate-800/20 border-y border-slate-200 dark:border-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Ecosistema Tecnológico & Todos los Lenguajes</h2>
-                <p class="text-slate-600 dark:text-slate-400">Dominio absoluto de lenguajes de programación de bajo y alto nivel, frameworks modernos y herramientas profesionales para cualquier reto corporativo.</p>
+                <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">My Current Projects</h2>
+                <p class="text-slate-600 dark:text-slate-400">Active development of advanced bots, systems, and web platforms.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <!-- Luau & Game Core -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-indigo-500/50 transition-all">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-indigo-500/30">
-                        <i class="fa-solid fa-cube"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Headdles Bot -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
+                        <img src="https://cdn.discordapp.com/icons/1542661404748943403/ce2317e65842600e05d46507734a8fd9.png?size=1024" alt="Headdles Logo" class="w-24 h-24 rounded-2xl shadow-lg project-img-wrapper relative z-10 bg-white dark:bg-slate-800">
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Luau & Roblox Architecture</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Experticia nativa en Luau avanzado, tipado estricto, Roact/Fusion, gestión de memoria eficiente, DataStores seguros y optimización de redes para experiencias virtuales masivas.</p>
-                    <ul class="space-y-2 text-sm font-medium">
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-indigo-500 mr-2"></i> Luau Typechecking Pro</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-indigo-500 mr-2"></i> Client-Server Synchronization</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-indigo-500 mr-2"></i> Custom Physics & UI Frameworks</li>
-                    </ul>
-                </div>
-
-                <!-- Web Development -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-purple-500/50 transition-all">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-purple-500/30">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Frontend & Web Systems</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Diseño y desarrollo de plataformas web hiper-rápidas utilizando HTML5 semántico, CSS3 moderno, Tailwind CSS, JavaScript ES6+, React.js, Vue y animaciones fluidas.</p>
-                    <ul class="space-y-2 text-sm font-medium">
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-purple-500 mr-2"></i> HTML5 / CSS3 / Tailwind</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-purple-500 mr-2"></i> JavaScript / TypeScript / React</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-purple-500 mr-2"></i> Progressive Web Apps (PWAs)</li>
-                    </ul>
-                </div>
-
-                <!-- Backend & DevOps -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-pink-500/50 transition-all">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-pink-600 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-pink-500/30">
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Backend & Cloud Systems</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Infraestructura de servidores escalables, APIs RESTful y GraphQL, bases de datos SQL/NoSQL y contenedores Docker para garantizar estabilidad 24/7.</p>
-                    <ul class="space-y-2 text-sm font-medium">
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-pink-500 mr-2"></i> Node.js, Python, C++, C#</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-pink-500 mr-2"></i> PostgreSQL, MongoDB, Redis</li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300"><i class="fa-solid fa-check text-pink-500 mr-2"></i> Docker, Git & Cloud Deployment</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Complete Language Badges Showcase -->
-            <div class="glass-card p-8 rounded-3xl">
-                <h4 class="text-center font-bold text-lg mb-6 text-slate-700 dark:text-slate-200">Catálogo Completo de Lenguajes y Tecnologías Dominadas</h4>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-300 font-semibold text-xs flex items-center"><i class="fa-solid fa-code mr-2"></i> Luau</span>
-                    <span class="px-4 py-2 rounded-xl bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-html5 mr-2"></i> HTML5 & CSS3</span>
-                    <span class="px-4 py-2 rounded-xl bg-pink-50 dark:bg-pink-950/50 border border-pink-200 dark:border-pink-800 text-pink-600 dark:text-pink-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-js mr-2"></i> JavaScript (ES6+)</span>
-                    <span class="px-4 py-2 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-react mr-2"></i> TypeScript & React</span>
-                    <span class="px-4 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-python mr-2"></i> Python</span>
-                    <span class="px-4 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-300 font-semibold text-xs flex items-center"><i class="fa-solid fa-c mr-2"></i> C# / .NET</span>
-                    <span class="px-4 py-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/50 border border-cyan-200 dark:border-cyan-800 text-cyan-600 dark:text-cyan-300 font-semibold text-xs flex items-center"><i class="fa-solid fa-microchip mr-2"></i> C++ / C</span>
-                    <span class="px-4 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800 text-rose-600 dark:text-rose-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-node mr-2"></i> Node.js & Express</span>
-                    <span class="px-4 py-2 rounded-xl bg-violet-50 dark:bg-violet-950/50 border border-violet-200 dark:border-violet-800 text-violet-600 dark:text-violet-300 font-semibold text-xs flex items-center"><i class="fa-solid fa-database mr-2"></i> SQL & NoSQL</span>
-                    <span class="px-4 py-2 rounded-xl bg-teal-50 dark:bg-teal-950/50 border border-teal-200 dark:border-teal-800 text-teal-600 dark:text-teal-300 font-semibold text-xs flex items-center"><i class="fa-solid fa-wind mr-2"></i> Tailwind CSS</span>
-                    <span class="px-4 py-2 rounded-xl bg-orange-50 dark:bg-orange-950/50 border border-orange-200 dark:border-orange-800 text-orange-600 dark:text-orange-300 font-semibold text-xs flex items-center"><i class="fa-brands fa-git-alt mr-2"></i> Git & Docker</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Soluciones Especiales para Empresas</h2>
-                <p class="text-slate-600 dark:text-slate-400">Servicios profesionales a la medida para posicionar tu marca en el ecosistema web y en metaversos virtuales con estándares de nivel internacional.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="text-indigo-500 text-2xl mb-4"><i class="fa-solid fa-vr-cardboard"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Metaversos & Luau</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Creación de experiencias inmersivas, showrooms virtuales y activaciones de marca optimizadas mediante scripting Luau avanzado.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="text-purple-500 text-2xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Desarrollo Web Full-Stack</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Sitios web corporativos y plataformas web de alta velocidad desarrollados con HTML, Tailwind y arquitecturas modernas.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="text-pink-500 text-2xl mb-4"><i class="fa-solid fa-bolt"></i></div>
-                    <h4 class="font-bold text-lg mb-2">Optimización de Código</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Auditoría, refactorización y eliminación de cuellos de botella en bases de código Luau, JS y Python para máxima velocidad.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="text-indigo-500 text-2xl mb-4"><i class="fa-solid fa-network-wired"></i></div>
-                    <h4 class="font-bold text-lg mb-2">APIs & Cloud Integration</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Conexión de apps y universos virtuales con pasarelas de pago seguras, bases de datos en la nube y servidores dedicados.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="proyectos" class="py-20 bg-slate-100/50 dark:bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Portafolio de Trabajos Destacados</h2>
-                <p class="text-slate-600 dark:text-slate-400">Proyectos reales diseñados con tecnologías avanzadas, rendimiento impecable y un diseño visual de impacto.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="glass-card rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center relative overflow-hidden">
-                            <i class="fa-solid fa-cube text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
-                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/30 backdrop-blur-md text-white text-xs font-semibold">Luau / Roblox Pro</span>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Headdles</h3>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">Active</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Metaverso Corporativo 3D</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Experiencia virtual interactiva en Luau con sincronización de red optimizada, sistema de inventarios modular y 60 FPS estables.</p>
+                        <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 mb-3">Role: Web Developer</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            Comprehensive platform and bot developed with a mixed ecosystem. Combines intuitive web interfaces with a powerful backend system.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">HTML</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">JS</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Lua</span>
+                        </div>
+                        <a href="https://headlesslabs.xyz" target="_blank" class="w-full py-2.5 rounded-xl bg-brand-50 hover:bg-brand-100 dark:bg-brand-900/20 dark:hover:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-medium text-sm flex justify-center items-center transition-colors">
+                            Visit headlesslabs.xyz <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Qyrex CEO -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
+                        <img src="https://cdn.discordapp.com/icons/1537598458951762061/58c643c7729993c23d7ec4c5eebd1f81.png?size=1024" alt="Qyrex Logo" class="w-24 h-24 rounded-2xl shadow-lg project-img-wrapper relative z-10 bg-white dark:bg-slate-800">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Qyrex CEO</h3>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">Active</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            Advanced management system and specialized Discord bot. Solid structure designed to handle operational commands efficiently.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Backend</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Systems</span>
+                        </div>
+                        <a href="http://qyrex.hopto.org" target="_blank" class="w-full py-2.5 rounded-xl bg-brand-50 hover:bg-brand-100 dark:bg-brand-900/20 dark:hover:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-medium text-sm flex justify-center items-center transition-colors">
+                            Visit qyrex.hopto.org <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Luau / Systems Architecture -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
+                        <div class="w-24 h-24 rounded-2xl bg-white dark:bg-slate-800 shadow-lg project-img-wrapper relative z-10 flex items-center justify-center text-4xl text-brand-500">
+                            <i class="fa-solid fa-layer-group"></i>
                         </div>
                     </div>
-                    <div class="px-6 pb-6 pt-0 flex items-center justify-between">
-                        <div class="flex space-x-2 text-xs font-semibold text-indigo-500">
-                            <span>#Luau</span>
-                            <span>#Typechecking</span>
-                            <span>#DataStore</span>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Luau Architecture</h3>
+                            <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-xs font-semibold">Framework</span>
                         </div>
-                        <button onclick="openModal('Metaverso Corporativo 3D', 'Proyecto inmersivo desarrollado íntegramente en Luau avanzado. Incluye sistemas de inventario sincronizados, UI modular reactiva y optimización estricta de red para eventos masivos empresariales.')" class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            Backend systems and state synchronization for enterprise Metaverses using advanced strict-typed Luau scripting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Luau</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">DataStore</span>
+                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Roblox</span>
+                        </div>
+                        <button onclick="document.getElementById('contact').scrollIntoView();" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-sm transition-colors">
+                            Request Demo
                         </button>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="glass-card rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
-                            <i class="fa-solid fa-globe text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
-                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/30 backdrop-blur-md text-white text-xs font-semibold">HTML5 / Tailwind</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Plataforma Web E-Commerce B2B</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Sitio corporativo hiper-rápido con diseño responsivo, animaciones dinámicas y pasarelas de pago integradas mediante JavaScript.</p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 pt-0 flex items-center justify-between">
-                        <div class="flex space-x-2 text-xs font-semibold text-purple-500">
-                            <span>#HTML</span>
-                            <span>#Tailwind</span>
-                            <span>#JavaScript</span>
-                        </div>
-                        <button onclick="openModal('Plataforma Web E-Commerce B2B', 'Sitio web moderno desarrollado con HTML5 semántico, Tailwind CSS y JavaScript optimizado. Cuenta con puntuación superior a 95% en rendimiento y accesibilidad web.')" class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="glass-card rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-tr from-indigo-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
-                            <i class="fa-solid fa-server text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
-                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/30 backdrop-blur-md text-white text-xs font-semibold">Full-Stack / Python</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Cloud Analytics Dashboard</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Panel corporativo en tiempo real para análisis de métricas con backend en Python/Node.js y bases de datos escalables.</p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 pt-0 flex items-center justify-between">
-                        <div class="flex space-x-2 text-xs font-semibold text-pink-500">
-                            <span>#Python</span>
-                            <span>#NodeJS</span>
-                            <span>#APIs</span>
-                        </div>
-                        <button onclick="openModal('Cloud Analytics Dashboard', 'Herramienta integral de procesamiento y visualización de datos empresariales. Construida con arquitecturas seguras y procesamiento asíncrono en la nube.')" class="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-950/50 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-extrabold mb-4">¿Listo para llevar tu empresa al siguiente nivel tecnológico?</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-8">Ponte en contacto hoy mismo para discutir tu próximo proyecto en Luau, desarrollo web o sistemas corporativos. Al hacer clic en enviar, tu solicitud llegará directamente a mi sistema.</p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-500 font-bold text-lg">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Correo Electrónico Directo</div>
-                                <div class="font-bold text-slate-800 dark:text-slate-200">yarishdz2@gmail.com</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-500 font-bold text-lg">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Disponibilidad</div>
-                                <div class="font-bold text-slate-800 dark:text-slate-200">Remoto Global / B2B Senior</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-pink-50 dark:bg-pink-950/50 flex items-center justify-center text-pink-500 font-bold text-lg">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Garantía</div>
-                                <div class="font-bold text-slate-800 dark:text-slate-200">+7 Años de Experiencia Comprobada</div>
-                            </div>
-                        </div>
-                    </div>
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 sm:p-10 rounded-3xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Let's Work Together</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Contact me for web development, bot creation, or Luau systems.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded-3xl shadow-xl">
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <form onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Nombre o Empresa</label>
-                            <input type="text" id="clientName" required placeholder="Tu Nombre o Empresa S.A." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-indigo-500 transition-colors">
+                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Name</label>
+                            <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Correo Electrónico</label>
-                            <input type="email" id="clientEmail" required placeholder="correo@empresa.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-indigo-500 transition-colors">
+                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Email</label>
+                            <input type="email" id="clientEmail" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Mensaje / Requerimiento B2B</label>
-                            <textarea id="clientMessage" rows="4" required placeholder="Cuéntame sobre tu proyecto en Luau, HTML o desarrollo..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
-                        </div>
-                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold shadow-lg shadow-indigo-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center space-x-2">
-                            <span>Enviar Propuesta de Proyecto</span>
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 mb-1.5">Message or Project Details</label>
+                        <textarea id="clientMessage" rows="4" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm resize-none"></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all flex items-center justify-center space-x-2">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer class="border-t border-slate-200 dark:border-slate-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-500 dark:text-slate-400">
-            <p>&copy; 2026 Ikgmonxr Portafolio. Todos los derechos reservados.</p>
-            <div class="flex space-x-6 mt-4 sm:mt-0 text-lg">
-                <a href="#" class="hover:text-indigo-500 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="hover:text-indigo-500 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#" class="hover:text-indigo-500 transition-colors"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" class="hover:text-indigo-500 transition-colors"><i class="fa-brands fa-twitter"></i></a>
-            </div>
+    <footer class="border-t border-slate-200 dark:border-slate-800/60 py-8 bg-slate-50 dark:bg-slate-900/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            <p>&copy; 2026 Ikgmonxr. Senior Web & Software Developer.</p>
         </div>
     </footer>
 
-    <!-- Project Details Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="glass-card max-w-lg w-full p-8 rounded-3xl shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 id="modalTitle" class="text-2xl font-bold mb-4">Título del Proyecto</h3>
-            <p id="modalDesc" class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">Descripción detallada del proyecto...</p>
-            <div class="flex justify-end">
-                <button onclick="closeModal()" class="px-6 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold">Cerrar</button>
+    <!-- Settings Modal Overlay -->
+    <div id="settingsModal" class="fixed inset-0 z-50 hidden bg-slate-900/40 backdrop-blur-sm transition-opacity flex items-center justify-center p-4 opacity-0">
+        <div class="glass-card w-full max-w-sm rounded-3xl shadow-2xl p-6 relative transform scale-95 transition-transform duration-300" id="settingsContent">
+            
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                    <i class="fa-solid fa-sliders text-brand-500 mr-2"></i> Settings
+                </h3>
+                <button onclick="toggleSettings()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:bg-red-100 hover:text-red-500 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Theme Option -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Dark Mode</p>
+                        <p class="text-xs text-slate-500">Toggle dark/light appearance</p>
+                    </div>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="darkModeToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-600 appearance-none cursor-pointer z-10 transition-all duration-300" onclick="toggleTheme()" checked/>
+                        <label for="darkModeToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-600 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+
+                <!-- Language Option (UI Only for demonstration) -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Language</p>
+                        <p class="text-xs text-slate-500">Choose site language</p>
+                    </div>
+                    <select class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2 outline-none cursor-pointer" onchange="showToast('Language successfully changed to ' + this.options[this.selectedIndex].text)">
+                        <option value="en" selected>English (EN)</option>
+                        <option value="es">Español (ES)</option>
+                    </select>
+                </div>
+
+                <!-- Animations Option -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Reduce Motion</p>
+                        <p class="text-xs text-slate-500">Disable UI animations</p>
+                    </div>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggleMotion" id="motionToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-600 appearance-none cursor-pointer z-10 transition-all duration-300" onclick="toggleMotion()"/>
+                        <label for="motionToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-600 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-700 text-center">
+                <p class="text-xs text-slate-400">System V 2.1.0</p>
             </div>
         </div>
     </div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-card px-6 py-4 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center space-x-3 text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
-        <i class="fa-solid fa-circle-check text-lg"></i>
-        <span id="toastText">¡Propuesta enviada con éxito a Discord y al correo yarishdz2@gmail.com!</span>
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-card px-5 py-3 rounded-xl shadow-lg border-l-4 border-l-brand-500 flex items-center space-x-3 transition-opacity">
+        <i class="fa-solid fa-circle-info text-brand-500"></i>
+        <span id="toastMessage" class="text-sm font-medium text-slate-700 dark:text-slate-200">Message sent successfully!</span>
     </div>
 
     <script>
-        // Toggle Dark Mode
-        function toggleDarkMode() {
+        // Theme Logic
+        function toggleTheme() {
             const html = document.documentElement;
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
+            const isDark = html.classList.toggle('dark');
+            const toggleBox = document.getElementById('darkModeToggle');
+            if(toggleBox) toggleBox.checked = isDark;
+        }
+
+        // Settings Modal Logic
+        function toggleSettings() {
+            const modal = document.getElementById('settingsModal');
+            const content = document.getElementById('settingsContent');
+            
+            if (modal.classList.contains('hidden')) {
+                // Open
+                modal.classList.remove('hidden');
+                // Trigger reflow
+                void modal.offsetWidth;
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
             } else {
-                html.classList.add('dark');
+                // Close
+                modal.classList.add('opacity-0');
+                content.classList.remove('scale-100');
+                content.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300); // Wait for transition
             }
         }
 
-        // Modal Logic
-        function openModal(title, desc) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDesc').innerText = desc;
-            const modal = document.getElementById('projectModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+        // Motion Toggle Logic
+        function toggleMotion() {
+            document.body.classList.toggle('reduce-motion');
+            showToast(document.body.classList.contains('reduce-motion') ? "Animations disabled." : "Animations enabled.");
         }
 
-        function closeModal() {
-            const modal = document.getElementById('projectModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+        // Generic Toast Function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgSpan = document.getElementById('toastMessage');
+            msgSpan.innerText = message;
+            
+            toast.classList.remove('hidden');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
         }
 
-        // Discord Webhook Form Handler
+        // Close modal when clicking outside
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleSettings();
+            }
+        });
+
+        // Form Submit Handler (Webhook)
         async function handleFormSubmit(event) {
             event.preventDefault();
             
@@ -444,52 +466,39 @@
             const btn = document.getElementById('submitBtn');
 
             btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i><span>Enviando al Webhook...</span>`;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i><span>Sending...</span>`;
 
             const webhookUrl = 'https://discord.com/api/webhooks/1547790131019255962/jH8yxUnLoGbg-Te7gw0jo2Cs_9VDYmjLng1gtu2817bIZq1J0nkDeJwUG7GKVjk4eiJF';
 
             const discordPayload = {
-                content: "🚀 **¡Nueva Solicitud de Contratación B2B!**",
-                embeds: [
-                    {
-                        title: "Detalles del Cliente",
-                        color: 65280,
-                        fields: [
-                            { name: "👤 Nombre / Empresa", value: name, inline: false },
-                            { name: "📧 Correo de Contacto", value: email, inline: false },
-                            { name: "💬 Requerimiento", value: message, inline: false }
-                        ],
-                        footer: {
-                            text: "Ikgmonxr Portafolio • 7 Años de Experiencia"
-                        },
-                        timestamp: new Date().toISOString()
-                    }
-                ]
+                content: "🚀 **New Portfolio Contact (English Version)**",
+                embeds: [{
+                    title: "Contact Details",
+                    color: 3447003, // Soft blue
+                    fields: [
+                        { name: "👤 Name", value: name, inline: true },
+                        { name: "📧 Email", value: email, inline: true },
+                        { name: "💬 Message", value: message, inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
             };
 
             try {
-                // Send request to Discord Webhook
                 await fetch(webhookUrl, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(discordPayload)
                 });
             } catch (error) {
                 console.error("Webhook error:", error);
             }
 
-            // Show success toast
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 5000);
+            showToast("Message sent successfully!");
 
             event.target.reset();
             btn.disabled = false;
-            btn.innerHTML = `<span>Enviar Propuesta de Proyecto</span><i class="fa-solid fa-paper-plane"></i>`;
+            btn.innerHTML = `<span>Send Message</span><i class="fa-solid fa-paper-plane text-xs"></i>`;
         }
     </script>
 </body>
