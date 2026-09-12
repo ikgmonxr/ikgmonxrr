@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ikgmonxr | Senior Software & Web Developer</title>
+    <title>Ikgmonxr | Elite Software Architecture & Multi-Page Hub</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,429 +14,623 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            900: '#0c4a6e',
+                            400: '#22d3ee', // Cyan
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            accent: '#a855f7', // Purple
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            950: '#020617',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(12px) scale(0.99)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        }
                     }
                 }
             }
         }
     </script>
     
-  
+    <!-- FontAwesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        
-        /* Clean tech glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(226, 232, 240, 0.6);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-        .dark .glass-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc;
+            overflow-x: hidden;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero-glow {
-            background: radial-gradient(circle at top center, rgba(14, 165, 233, 0.08) 0%, transparent 60%);
-        }
-        .dark .hero-glow {
-            background: radial-gradient(circle at top center, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+        /* Premium Glassmorphism */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
-        .project-img-wrapper {
-            transition: transform 0.3s ease;
-        }
-        .group:hover .project-img-wrapper {
-            transform: scale(1.05);
+        /* Glowing Text */
+        .text-glow {
+            text-shadow: 0 0 25px rgba(34, 211, 238, 0.45);
         }
 
-        /* Toggle Switch Styles */
-        .toggle-checkbox:checked {
-            right: 0;
-            border-color: #0ea5e9;
+        /* Dynamic Background Grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 85%);
         }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #0ea5e9;
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+        /* Typing cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
         }
-        
-        .reduce-motion * {
-            animation: none !important;
-            transition: none !important;
-            scroll-behavior: auto !important;
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Animated Submit Button */
+        .btn-glow {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            background: linear-gradient(45deg, #22d3ee, #a855f7, #3b82f6, #a855f7);
+            z-index: -1;
+            border-radius: 14px;
+            background-size: 400%;
+            animation: gradient-x 4s linear infinite;
+            transition: opacity 0.3s ease;
+            opacity: 0.8;
+        }
+        .btn-glow:hover::before {
+            opacity: 1;
+            filter: blur(10px);
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 min-h-screen transition-colors duration-300">
+<body class="min-h-screen text-slate-300 relative flex flex-col justify-between">
 
-    <nav class="fixed top-0 left-0 right-0 z-40 glass-card transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-11 h-11 rounded-xl shadow-md overflow-hidden group-hover:shadow-brand-500/30 transition-all border-2 border-transparent group-hover:border-brand-400">
-                    <!-- New Avatar Image -->
-                    <img src="https://cdn.discordapp.com/avatars/1267954195982581782/a_5be5a20be150b5f522cdfd7a728de315.png?size=1024" alt="Ikgmonxr Avatar" class="w-full h-full object-cover">
+    <div class="fixed inset-0 bg-grid z-0 pointer-events-none"></div>
+    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-950/20 blur-[140px] z-0 pointer-events-none"></div>
+    <div class="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-950/20 blur-[140px] z-0 pointer-events-none"></div>
+
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl glass-panel rounded-2xl transition-all duration-300">
+        <div class="px-4 sm:px-6 h-16 flex items-center justify-between">
+            <!-- Logo / Avatar -->
+            <button onclick="navigateTo('home')" class="flex items-center space-x-3 group outline-none">
+                <div class="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-slate-700 group-hover:border-brand-400 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0)] group-hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+                    <img src="https://cdn.discordapp.com/avatars/1267954195982581782/a_5be5a20be150b5f522cdfd7a728de315.png?size=1024" alt="Ikgmonxr Avatar" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/0f172a/22d3ee?text=IK'">
                 </div>
-                <div>
-                    <span class="text-lg font-bold tracking-tight block text-slate-900 dark:text-white">Ikgmonxr</span>
-                    <span class="text-xs text-brand-500 font-medium">Web & Software Dev</span>
+                <div class="hidden sm:block text-left">
+                    <span class="text-sm font-bold text-white block leading-tight">Ikgmonxr</span>
+                    <span class="text-[10px] text-brand-400 font-mono uppercase tracking-wider">Elite Systems</span>
                 </div>
-            </a>
-            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                <a href="#home" class="hover:text-brand-500 transition-colors">Home</a>
-                <a href="#skills" class="hover:text-brand-500 transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-brand-500 transition-colors">Current Work</a>
-                <a href="#contact" class="hover:text-brand-500 transition-colors">Contact</a>
+            </button>
+
+            <!-- Navigation Buttons (SPA routing) -->
+            <div class="flex items-center space-x-1 sm:space-x-2 bg-slate-900/60 p-1 rounded-xl border border-slate-800">
+                <button id="nav-home" onclick="navigateTo('home')" class="nav-btn px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">Home</button>
+                <button id="nav-technologies" onclick="navigateTo('technologies')" class="nav-btn px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">Technologies</button>
+                <button id="nav-projects" onclick="navigateTo('projects')" class="nav-btn px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">Projects</button>
+                <button id="nav-contact" onclick="navigateTo('contact')" class="nav-btn px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">Contact</button>
             </div>
-            <div class="flex items-center space-x-3">
-                <!-- Theme Toggle -->
-                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400" title="Toggle Theme">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
-                </button>
-                <!-- Settings Gear -->
-                <button onclick="toggleSettings()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400" title="Settings">
-                    <i class="fa-solid fa-gear hover:rotate-90 transition-transform duration-300"></i>
-                </button>
-            </div>
+
+            <!-- Settings Gear -->
+            <button onclick="toggleSettings()" class="w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-brand-400 hover:bg-slate-800 transition-all outline-none" title="System Settings">
+                <i class="fa-solid fa-gear text-lg hover:rotate-90 transition-transform duration-500"></i>
+            </button>
         </div>
     </nav>
 
-    <header id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-        <div class="absolute inset-0 hero-glow pointer-events-none -z-10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800/50 text-brand-600 dark:text-brand-400 text-xs font-semibold mb-8">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                <span>Available for New Projects</span>
-            </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight mb-6 text-slate-900 dark:text-white">
-                Elite Software Solutions, <br>
-                <span class="gradient-text">Web Dev & Architecture</span>
-            </h1>
-            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-                Specialized in web development, Python, JavaScript, Lua and Luau. Building high-performance bots, automated systems, and clean, scalable web platforms.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm shadow-lg shadow-brand-500/20 transition-all text-center">
-                    View My Work
-                </a>
-                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 font-medium text-sm transition-all text-center">
-                    Contact Me
-                </a>
-            </div>
-        </div>
-    </header>
+    <main id="app-view" class="relative z-10 pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full flex-grow animate-fade-in">
+        <!-- Views will be dynamically injected here -->
+    </main>
 
-    <section id="skills" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Technologies & Languages</h2>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Mastery over a wide array of modern languages and tools for bot development, web architecture, and virtual environments.</p>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
-                <!-- Comprehensive Language List -->
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-code text-brand-500 mr-2"></i> Luau
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-moon text-indigo-500 mr-2"></i> Lua
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-python text-yellow-500 mr-2"></i> Python
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-js text-yellow-400 mr-2"></i> JavaScript
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-file-code text-blue-500 mr-2"></i> TypeScript
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-html5 text-orange-500 mr-2"></i> HTML5
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-css3-alt text-blue-600 mr-2"></i> CSS3
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-wind text-teal-400 mr-2"></i> Tailwind CSS
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-react text-cyan-400 mr-2"></i> React
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-node-js text-green-500 mr-2"></i> Node.js
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-c text-purple-500 mr-2"></i> C++ / C#
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-database text-slate-500 mr-2"></i> SQL & NoSQL
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-git-alt text-red-500 mr-2"></i> Git
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-brands fa-docker text-blue-500 mr-2"></i> Docker
-                </span>
-                <span class="px-5 py-2.5 rounded-xl glass-card font-medium text-sm flex items-center hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-robot text-indigo-400 mr-2"></i> Discord API
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 bg-slate-100/50 dark:bg-slate-800/20 border-y border-slate-200 dark:border-slate-800/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">My Current Projects</h2>
-                <p class="text-slate-600 dark:text-slate-400">Active development of advanced bots, systems, and web platforms.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Headdles Bot -->
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
-                        <img src="https://cdn.discordapp.com/icons/1542661404748943403/ce2317e65842600e05d46507734a8fd9.png?size=1024" alt="Headdles Logo" class="w-24 h-24 rounded-2xl shadow-lg project-img-wrapper relative z-10 bg-white dark:bg-slate-800">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Headdles</h3>
-                            <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">Active</span>
-                        </div>
-                        <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 mb-3">Role: Web Developer</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
-                            Comprehensive platform and bot developed with a mixed ecosystem. Combines intuitive web interfaces with a powerful backend system.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">HTML</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">JS</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Python</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Lua</span>
-                        </div>
-                        <a href="https://headlesslabs.xyz" target="_blank" class="w-full py-2.5 rounded-xl bg-brand-50 hover:bg-brand-100 dark:bg-brand-900/20 dark:hover:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-medium text-sm flex justify-center items-center transition-colors">
-                            Visit headlesslabs.xyz <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
-                        <img src="https://cdn.discordapp.com/icons/1537598458951762061/58c643c7729993c23d7ec4c5eebd1f81.png?size=1024" alt="Qyrex Logo" class="w-24 h-24 rounded-2xl shadow-lg project-img-wrapper relative z-10 bg-white dark:bg-slate-800">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Qyrex CEO</h3>
-                            <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">Active</span>
-                        </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
-                            Advanced management system and specialized Discord bot. Solid structure designed to handle operational commands efficiently.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Python</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Backend</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Systems</span>
-                        </div>
-                        <a href="http://qyrex.hopto.org" target="_blank" class="w-full py-2.5 rounded-xl bg-brand-50 hover:bg-brand-100 dark:bg-brand-900/20 dark:hover:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-medium text-sm flex justify-center items-center transition-colors">
-                            Visit qyrex.hopto.org <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-               
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
-                        <div class="w-24 h-24 rounded-2xl bg-white dark:bg-slate-800 shadow-lg project-img-wrapper relative z-10 flex items-center justify-center text-4xl text-brand-500">
-                            <i class="fa-solid fa-layer-group"></i>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Luau Architecture</h3>
-                            <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-xs font-semibold">Framework</span>
-                        </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
-                            Backend systems and state synchronization for enterprise Metaverses using advanced strict-typed Luau scripting.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Luau</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">DataStore</span>
-                            <span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300">Roblox</span>
-                        </div>
-                        <button onclick="document.getElementById('contact').scrollIntoView();" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-sm transition-colors">
-                            Request Demo
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-card p-8 sm:p-10 rounded-3xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Let's Work Together</h2>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Contact me for web development, bot creation, or Luau systems.</p>
-                </div>
-
-                <form onsubmit="handleFormSubmit(event)" class="space-y-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Name</label>
-                            <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-500 mb-1.5">Email</label>
-                            <input type="email" id="clientEmail" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-500 mb-1.5">Message or Project Details</label>
-                        <textarea id="clientMessage" rows="4" required class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm resize-none"></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all flex items-center justify-center space-x-2">
-                        <span>Send Message</span>
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-slate-200 dark:border-slate-800/60 py-8 bg-slate-50 dark:bg-slate-900/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            <p>&copy; 2026 Ikgmonxr. Senior Web & Software Developer.</p>
-        </div>
+    <footer class="relative z-10 py-8 text-center border-t border-slate-800/60 bg-slate-950/40 text-xs font-mono text-slate-500">
+        <p>© 2026 Ikgmonxr • Elite Software Solutions & Architecture. All rights reserved.</p>
     </footer>
 
-    
-    <div id="settingsModal" class="fixed inset-0 z-50 hidden bg-slate-900/40 backdrop-blur-sm transition-opacity flex items-center justify-center p-4 opacity-0">
-        <div class="glass-card w-full max-w-sm rounded-3xl shadow-2xl p-6 relative transform scale-95 transition-transform duration-300" id="settingsContent">
+    <div id="settingsModal" class="fixed inset-0 z-[100] hidden bg-slate-950/80 backdrop-blur-sm transition-opacity flex items-center justify-center p-4 opacity-0">
+        <div class="glass-panel border-slate-700 w-full max-w-sm rounded-3xl p-6 relative transform scale-95 transition-transform duration-300" id="settingsContent">
             
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
-                    <i class="fa-solid fa-sliders text-brand-500 mr-2"></i> Settings
+                <h3 class="text-lg font-mono font-bold text-white flex items-center">
+                    <i class="fa-solid fa-sliders text-brand-400 mr-2"></i> SYSTEM_CONFIG
                 </h3>
-                <button onclick="toggleSettings()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:bg-red-100 hover:text-red-500 transition-colors">
+                <button onclick="toggleSettings()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <div class="space-y-6">
-               
+                <!-- Theme / Dark Mode -->
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Dark Mode</p>
-                        <p class="text-xs text-slate-500">Toggle dark/light appearance</p>
+                        <p class="text-sm font-bold text-slate-200">Dark Protocol</p>
+                        <p class="text-[10px] font-mono text-slate-500 uppercase">Optimized UI Theme</p>
                     </div>
-                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="toggle" id="darkModeToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-600 appearance-none cursor-pointer z-10 transition-all duration-300" onclick="toggleTheme()" checked/>
-                        <label for="darkModeToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-600 cursor-pointer transition-colors duration-300"></label>
+                    <div class="w-10 h-5 bg-cyan-500 rounded-full relative cursor-not-allowed opacity-80" title="Locked to Dark Mode">
+                        <div class="absolute right-1 top-0.5 w-4 h-4 bg-white rounded-full"></div>
                     </div>
                 </div>
 
-                
+                <!-- Language Selector -->
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Language</p>
-                        <p class="text-xs text-slate-500">Choose site language</p>
+                        <p class="text-sm font-bold text-slate-200">Language</p>
+                        <p class="text-[10px] font-mono text-slate-500 uppercase">Localization</p>
                     </div>
-                    <select class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2 outline-none cursor-pointer" onchange="showToast('Language successfully changed to ' + this.options[this.selectedIndex].text)">
-                        <option value="en" selected>English (EN)</option>
-                        <option value="es">Español (ES)</option>
+                    <select class="bg-slate-800 border border-slate-700 text-slate-300 text-xs rounded-lg p-1.5 outline-none font-mono">
+                        <option value="en" selected>EN_US</option>
+                        <option value="es">ES_ES</option>
                     </select>
                 </div>
-
                 
+                <!-- Performance Mode -->
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Reduce Motion</p>
-                        <p class="text-xs text-slate-500">Disable UI animations</p>
+                        <p class="text-sm font-bold text-slate-200">FX Animations</p>
+                        <p class="text-[10px] font-mono text-slate-500 uppercase">Toggle visual rendering</p>
                     </div>
-                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="toggleMotion" id="motionToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-600 appearance-none cursor-pointer z-10 transition-all duration-300" onclick="toggleMotion()"/>
-                        <label for="motionToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-600 cursor-pointer transition-colors duration-300"></label>
+                    <div class="w-10 h-5 bg-cyan-500 rounded-full relative cursor-pointer" onclick="this.classList.toggle('bg-slate-700'); this.classList.toggle('bg-cyan-500'); this.children[0].classList.toggle('right-1'); this.children[0].classList.toggle('left-1');">
+                        <div class="absolute right-1 top-0.5 w-4 h-4 bg-white rounded-full transition-all"></div>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-700 text-center">
-                <p class="text-xs text-slate-400">System V 2.1.0</p>
+            <div class="mt-8 pt-4 border-t border-slate-800 text-center">
+                <p class="text-[10px] font-mono text-slate-600">SYS_BUILD_V4.0_SPA</p>
             </div>
         </div>
     </div>
 
-
-    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-card px-5 py-3 rounded-xl shadow-lg border-l-4 border-l-brand-500 flex items-center space-x-3 transition-opacity">
-        <i class="fa-solid fa-circle-info text-brand-500"></i>
-        <span id="toastMessage" class="text-sm font-medium text-slate-700 dark:text-slate-200">Message sent successfully!</span>
+    <div id="toast" class="fixed bottom-6 right-6 z-[100] hidden glass-panel px-5 py-4 rounded-xl border-l-4 border-l-cyan-400 flex items-center space-x-3 shadow-2xl animate-fade-in">
+        <i class="fa-solid fa-terminal text-cyan-400"></i>
+        <span id="toastMessage" class="text-sm font-mono text-white">Action completed successfully.</span>
     </div>
 
     <script>
-        
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.classList.toggle('dark');
-            const toggleBox = document.getElementById('darkModeToggle');
-            if(toggleBox) toggleBox.checked = isDark;
+        // Define Templates for Each Virtual Page (/home, /technologies, /projects, /contact)
+        const routes = {
+            'home': `
+                <div class="min-h-[75vh] flex flex-col justify-center py-6 animate-fade-in">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-400/10 border border-brand-400/20 text-brand-400 text-xs font-mono mb-6 shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></span>
+                                <span>ELITE SOFTWARE SOLUTIONS • ONLINE</span>
+                            </div>
+                            
+                            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                                Architecting <br />
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 animate-gradient-x text-glow">
+                                    Digital Futures
+                                </span>
+                            </h1>
+                            
+                            <div class="h-8 mb-6">
+                                <p id="typewriter" class="text-base sm:text-xl text-slate-400 font-mono cursor"></p>
+                            </div>
+                            
+                            <p class="text-slate-400 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed text-sm sm:text-base">
+                                Senior Full-Stack Developer & Systems Architect specializing in high-performance web platforms, automated bots, and optimized Luau environments. Web Developer at Headdles and Lead Systems at Qyrex CEO.
+                            </p>
+                            
+                            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                                <button onclick="navigateTo('projects')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold hover:scale-105 transition-transform flex items-center justify-center space-x-2 shadow-lg cursor-pointer">
+                                    <span>View My Work</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                                <button onclick="navigateTo('contact')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl glass-panel text-white font-medium hover:bg-slate-800 transition-colors flex items-center justify-center space-x-2 cursor-pointer">
+                                    <i class="fa-regular fa-paper-plane text-brand-400"></i>
+                                    <span>Contact Me</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Hologram Graphic -->
+                        <div class="flex-1 w-full max-w-md animate-float relative">
+                            <div class="relative w-full aspect-square rounded-full border border-slate-700/50 flex items-center justify-center">
+                                <div class="absolute inset-4 rounded-full border border-cyan-500/30 border-dashed animate-[spin_20s_linear_infinite]"></div>
+                                <div class="absolute inset-12 rounded-full border border-purple-500/30 animate-[spin_15s_linear_infinite_reverse]"></div>
+                                <div class="glass-panel p-8 rounded-2xl shadow-2xl relative z-10 text-center">
+                                    <i class="fa-solid fa-terminal text-5xl text-brand-400 mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"></i>
+                                    <h3 class="text-white font-bold text-xl">Elite Architecture</h3>
+                                    <p class="text-xs text-slate-400 mt-2 font-mono">Luau // Python // JS // C++</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'technologies': `
+                <div class="py-6 animate-fade-in space-y-12">
+                    <div class="text-center">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-xs font-mono mb-4">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>TECH STACK & CAPABILITIES</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Technologies & Languages</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Comprehensive mastery across low-level scripting, web frameworks, and robust backend systems.</p>
+                    </div>
+
+                    <!-- Language Badges Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-brand-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-solid fa-code text-2xl text-brand-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">Luau / Lua</div>
+                            <div class="text-[10px] text-slate-500 font-mono">Game Systems</div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-cyan-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-brands fa-python text-2xl text-cyan-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">Python</div>
+                            <div class="text-[10px] text-slate-500 font-mono">Bots & Backend</div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-purple-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-brands fa-js text-2xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">JavaScript</div>
+                            <div class="text-[10px] text-slate-500 font-mono">Interactive Web</div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-blue-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-brands fa-html5 text-2xl text-orange-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">HTML5 / CSS3</div>
+                            <div class="text-[10px] text-slate-500 font-mono">Markup & Styles</div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-indigo-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-solid fa-microchip text-2xl text-indigo-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">C++ / C#</div>
+                            <div class="text-[10px] text-slate-500 font-mono">High Performance</div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl text-center hover:border-pink-400 transition-all hover:scale-105 group cursor-pointer">
+                            <i class="fa-brands fa-node text-2xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                            <div class="text-white font-bold text-sm">Node.js & SQL</div>
+                            <div class="text-[10px] text-slate-500 font-mono">Databases & APIs</div>
+                        </div>
+                    </div>
+
+                    <!-- Category Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                        <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-cyan-500 hover:shadow-[0_10px_30px_rgba(6,182,212,0.15)] transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-globe"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Web Development</h3>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed">Building responsive, high-speed interfaces with HTML5, CSS3, JavaScript, Tailwind, and React architectures.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 rounded text-[11px] font-mono">HTML5</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 rounded text-[11px] font-mono">CSS3</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 rounded text-[11px] font-mono">JavaScript</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 rounded text-[11px] font-mono">Tailwind</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-purple-500 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)] transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Backend & Automation</h3>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed">Developing robust automated bots, Discord API handlers, and scalable server backends in Python and Node.js.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-slate-800 text-purple-300 rounded text-[11px] font-mono">Python</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-purple-300 rounded text-[11px] font-mono">C++</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-purple-300 rounded text-[11px] font-mono">Node.js</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-purple-300 rounded text-[11px] font-mono">SQL</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-pink-500 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-cube"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Luau & Game Arch.</h3>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed">Advanced Luau scripting, custom state management, secure DataStores, and client-server synchronization.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-slate-800 text-pink-300 rounded text-[11px] font-mono">Luau</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-pink-300 rounded text-[11px] font-mono">Lua</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-pink-300 rounded text-[11px] font-mono">DataStores</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-pink-300 rounded text-[11px] font-mono">Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'projects': `
+                <div class="py-6 animate-fade-in space-y-12">
+                    <div class="text-center">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-purple-400/10 border border-purple-400/20 text-purple-400 text-xs font-mono mb-4">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <span>PORTFOLIO & DEPLOYMENTS</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Featured Projects</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Active deployments and professional platforms built with clean code and high availability.</p>
+                    </div>
+
+                    <!-- Main Projects Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Headdles -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group flex flex-col relative border border-slate-700/50 hover:border-cyan-500/50 transition-all shadow-xl">
+                            <div class="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 text-xs font-mono border border-emerald-500/30">
+                                <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> ACTIVE
+                            </div>
+                            <div class="h-48 bg-slate-900 flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
+                                <img src="https://cdn.discordapp.com/icons/1542661404748943403/ce2317e65842600e05d46507734a8fd9.png?size=1024" alt="Headdles Logo" class="w-28 h-28 rounded-3xl shadow-2xl relative z-0 group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/120x120/0f172a/22d3ee?text=H'">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col relative z-20 -mt-6 bg-slate-900/95 backdrop-blur-md rounded-t-2xl">
+                                <h3 class="text-2xl font-bold text-white mb-1">Headdles</h3>
+                                <p class="text-cyan-400 text-xs font-mono mb-3">Role: Web Developer</p>
+                                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">
+                                    Comprehensive web platform and bot ecosystem. Combines intuitive web interfaces, HTML/JS frontend, and powerful backend architecture for seamless user management.
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 mb-6">
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">HTML5</span>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">JavaScript</span>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">Python</span>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">Luau</span>
+                                </div>
+                                <a href="https://headlesslabs.xyz" target="_blank" class="w-full py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-medium text-sm flex justify-center items-center transition-colors border border-cyan-500/30">
+                                    Launch headlesslabs.xyz <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Qyrex CEO -->
+                        <div class="glass-panel rounded-2xl overflow-hidden group flex flex-col relative border border-slate-700/50 hover:border-purple-500/50 transition-all shadow-xl">
+                            <div class="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 text-xs font-mono border border-emerald-500/30">
+                                <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> ACTIVE
+                            </div>
+                            <div class="h-48 bg-slate-900 flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
+                                <img src="https://cdn.discordapp.com/icons/1537598458951762061/58c643c7729993c23d7ec4c5eebd1f81.png?size=1024" alt="Qyrex Logo" class="w-28 h-28 rounded-3xl shadow-2xl relative z-0 group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/120x120/0f172a/a855f7?text=Q'">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col relative z-20 -mt-6 bg-slate-900/95 backdrop-blur-md rounded-t-2xl">
+                                <h3 class="text-2xl font-bold text-white mb-1">Qyrex CEO</h3>
+                                <p class="text-purple-400 text-xs font-mono mb-3">Role: Lead Systems & Developer</p>
+                                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">
+                                    Advanced management system and specialized Discord bot. Built with a solid backend framework designed to handle high-frequency operational commands.
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 mb-6">
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">Python</span>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">Backend Systems</span>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">API Integration</span>
+                                </div>
+                                <a href="http://qyrex.hopto.org" target="_blank" class="w-full py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 font-medium text-sm flex justify-center items-center transition-colors border border-purple-500/30">
+                                    Launch qyrex.hopto.org <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Gallery Divider -->
+                    <div class="flex items-center space-x-4 pt-6">
+                        <div class="h-px bg-slate-800 flex-1"></div>
+                        <h3 class="text-sm font-mono text-slate-400 tracking-widest uppercase"><i class="fa-solid fa-image text-brand-400 mr-2"></i> Interface & System Gallery</h3>
+                        <div class="h-px bg-slate-800 flex-1"></div>
+                    </div>
+
+                    <!-- Gallery Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass-panel rounded-xl overflow-hidden group cursor-pointer border border-slate-700/50 hover:border-brand-400/50 transition-colors shadow-lg">
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="https://cdn.discordapp.com/attachments/1428889113200955444/1548425109314867240/image.png?ex=6aa702c2&is=6aa5b142&hm=a5496e81ba674c90a510d3676b6a42f2676961452971eb04601ce02736a92050" alt="Preview 1" class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/22d3ee?text=System+UI+1'">
+                            </div>
+                        </div>
+                        <div class="glass-panel rounded-xl overflow-hidden group cursor-pointer border border-slate-700/50 hover:border-brand-400/50 transition-colors shadow-lg">
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="https://cdn.discordapp.com/attachments/1533967293284093972/1548425384507215973/image.png?ex=6aa70304&is=6aa5b184&hm=bef968cb74d2485077a76eb14fb7528ab4ea45b672d5926113eb56339790d2ce" alt="Preview 2" class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/a855f7?text=System+UI+2'">
+                            </div>
+                        </div>
+                        <div class="glass-panel rounded-xl overflow-hidden group cursor-pointer border border-slate-700/50 hover:border-brand-400/50 transition-colors shadow-lg">
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="https://cdn.discordapp.com/attachments/1533967293284093972/1548425832127529001/image.png?ex=6aa7036e&is=6aa5b1ee&hm=fdedd1efdb0542d87648af480ecb41a102fa7eca19c7c2d0e390f9cdf7bb4778" alt="Preview 3" class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/06b6d4?text=System+UI+3'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'contact': `
+                <div class="py-6 animate-fade-in max-w-3xl mx-auto">
+                    <div class="text-center mb-10">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-400/10 border border-brand-400/20 text-brand-400 text-xs font-mono mb-4">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                            <span>COMMUNICATION CHANNEL</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Establish Connection</h2>
+                        <p class="text-slate-400 font-mono text-xs sm:text-sm">Initialize a secure communication channel for web development, bot creation, or systems architecture inquiries.</p>
+                    </div>
+
+                    <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-700 shadow-2xl">
+                        <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Client Identity</label>
+                                    <input type="text" id="clientName" required placeholder="Name or Alias" class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Return Address</label>
+                                    <input type="email" id="clientEmail" required placeholder="Email Address" class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Encrypted Payload (Message)</label>
+                                <textarea id="clientMessage" rows="5" required placeholder="Describe your project, stack requirements, or collaboration idea..." class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm resize-none"></textarea>
+                            </div>
+                            
+                            <!-- Animated Glowing Button -->
+                            <div class="pt-4">
+                                <button type="submit" id="submitBtn" class="btn-glow w-full block cursor-pointer">
+                                    <div class="bg-slate-900 rounded-[12px] px-8 py-4 flex items-center justify-center space-x-3 transition-colors hover:bg-slate-800/80 text-white font-bold tracking-wider text-sm shadow-xl">
+                                        <span id="btnText">TRANSMIT MESSAGE</span>
+                                        <i id="btnIcon" class="fa-solid fa-satellite-dish text-brand-400"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `
+        };
+
+        // Router Navigation Function
+        function navigateTo(route) {
+            if (!routes[route]) route = 'home';
+            
+            // Update browser hash cleanly (e.g. #home, #projects)
+            window.location.hash = route;
+            
+            // Render route content into app view container
+            const container = document.getElementById('app-view');
+            container.innerHTML = routes[route];
+            
+            // Scroll to top on navigation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update Active Nav Button styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-white', 'bg-slate-800', 'shadow-sm');
+                btn.classList.add('text-slate-400');
+            });
+            const activeBtn = document.getElementById(`nav-${route}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-400');
+                activeBtn.classList.add('text-white', 'bg-slate-800', 'shadow-sm');
+            }
+
+            // If home route, trigger typewriter effect
+            if (route === 'home') {
+                setTimeout(startTypewriter, 300);
+            }
         }
 
-        // Settings Modal Logic
+        // Handle browser back/forward and initial load
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigateTo(hash);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialRoute = window.location.hash.replace('#', '') || 'home';
+            navigateTo(initialRoute);
+        });
+
+        // Typewriter Effect Logic for Home Route
+        let typingTimeout = null;
+        function startTypewriter() {
+            const el = document.getElementById("typewriter");
+            if (!el) return;
+
+            const phrases = [
+                "Web Developer at Headdles.",
+                "Lead Systems at Qyrex CEO.",
+                "Building high-performance Python & Luau systems.",
+                "Crafting clean web architectures."
+            ];
+            let currentPhrase = 0;
+            let isDeleting = false;
+            let charIndex = 0;
+            
+            if (typingTimeout) clearTimeout(typingTimeout);
+
+            function type() {
+                const targetEl = document.getElementById("typewriter");
+                if (!targetEl) return;
+
+                const text = phrases[currentPhrase];
+                
+                if (isDeleting) {
+                    targetEl.innerText = text.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    targetEl.innerText = text.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let speed = isDeleting ? 30 : 100;
+                
+                if (!isDeleting && charIndex === text.length) {
+                    speed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    currentPhrase = (currentPhrase + 1) % phrases.length;
+                    speed = 500;
+                }
+                
+                typingTimeout = setTimeout(type, speed);
+            }
+            
+            type();
+        }
+
+        // Settings Modal Toggle
         function toggleSettings() {
             const modal = document.getElementById('settingsModal');
             const content = document.getElementById('settingsContent');
             
             if (modal.classList.contains('hidden')) {
-                // Open
                 modal.classList.remove('hidden');
-                // Trigger reflow
                 void modal.offsetWidth;
                 modal.classList.remove('opacity-0');
                 content.classList.remove('scale-95');
                 content.classList.add('scale-100');
             } else {
-                // Close
                 modal.classList.add('opacity-0');
                 content.classList.remove('scale-100');
                 content.classList.add('scale-95');
                 setTimeout(() => {
                     modal.classList.add('hidden');
-                }, 300); // Wait for transition
+                }, 300);
             }
         }
 
-        
-        function toggleMotion() {
-            document.body.classList.toggle('reduce-motion');
-            showToast(document.body.classList.contains('reduce-motion') ? "Animations disabled." : "Animations enabled.");
-        }
-
-     
+        // Toast Notification Helper
         function showToast(message) {
             const toast = document.getElementById('toast');
             const msgSpan = document.getElementById('toastMessage');
@@ -446,40 +640,37 @@
             
             setTimeout(() => {
                 toast.classList.add('hidden');
-            }, 3000);
+            }, 4000);
         }
 
-        // Close modal when clicking outside
-        document.getElementById('settingsModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                toggleSettings();
-            }
-        });
-
-        // Form Submit Handler (Webhook)
+        // Form Submit Handler (Discord Webhook Integration)
         async function handleFormSubmit(event) {
             event.preventDefault();
             
             const name = document.getElementById('clientName').value;
             const email = document.getElementById('clientEmail').value;
             const message = document.getElementById('clientMessage').value;
-            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const submitBtn = document.getElementById('submitBtn');
 
-            btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i><span>Sending...</span>`;
+            submitBtn.disabled = true;
+            btnText.innerText = "TRANSMITTING...";
+            btnIcon.className = "fa-solid fa-spinner animate-spin text-brand-400";
 
             const webhookUrl = 'https://discord.com/api/webhooks/1547790131019255962/jH8yxUnLoGbg-Te7gw0jo2Cs_9VDYmjLng1gtu2817bIZq1J0nkDeJwUG7GKVjk4eiJF';
 
             const discordPayload = {
-                content: "🚀 **New Portfolio Contact (English Version)**",
+                content: "🚀 **ELITE SYSTEM: New Transmission Received**",
                 embeds: [{
-                    title: "Contact Details",
-                    color: 3447003, // Soft blue
+                    title: "Incoming Project Inquiry",
+                    color: 2282478,
                     fields: [
-                        { name: "👤 Name", value: name, inline: true },
-                        { name: "📧 Email", value: email, inline: true },
-                        { name: "💬 Message", value: message, inline: false }
+                        { name: "👤 Identity", value: name, inline: true },
+                        { name: "📧 Return Address", value: email, inline: true },
+                        { name: "💬 Decrypted Payload", value: message, inline: false }
                     ],
+                    footer: { text: "Ikgmonxr Elite Portfolio SPA V4.0" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -490,15 +681,16 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(discordPayload)
                 });
+                showToast("Transmission successful. Awaiting system response.");
             } catch (error) {
-                console.error("Webhook error:", error);
+                console.error("Transmission error:", error);
+                showToast("Transmission sent successfully.");
             }
 
-            showToast("Message sent successfully!");
-
             event.target.reset();
-            btn.disabled = false;
-            btn.innerHTML = `<span>Send Message</span><i class="fa-solid fa-paper-plane text-xs"></i>`;
+            submitBtn.disabled = false;
+            btnText.innerText = "TRANSMIT MESSAGE";
+            btnIcon.className = "fa-solid fa-satellite-dish text-brand-400";
         }
     </script>
 </body>
