@@ -30,7 +30,7 @@
         }
     </script>
     
-    <!-- FontAwesome & Google Fonts -->
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -240,7 +240,7 @@
                     </div>
                 </div>
 
-                <!-- Qyrex CEO -->
+                
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
                     <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
@@ -265,7 +265,7 @@
                     </div>
                 </div>
 
-                <!-- Luau / Systems Architecture -->
+               
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
                     <div class="h-40 bg-slate-200 dark:bg-slate-700 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
@@ -334,7 +334,7 @@
         </div>
     </footer>
 
-    <!-- Settings Modal Overlay -->
+    
     <div id="settingsModal" class="fixed inset-0 z-50 hidden bg-slate-900/40 backdrop-blur-sm transition-opacity flex items-center justify-center p-4 opacity-0">
         <div class="glass-card w-full max-w-sm rounded-3xl shadow-2xl p-6 relative transform scale-95 transition-transform duration-300" id="settingsContent">
             
@@ -348,7 +348,7 @@
             </div>
 
             <div class="space-y-6">
-                <!-- Theme Option -->
+               
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Dark Mode</p>
@@ -360,7 +360,7 @@
                     </div>
                 </div>
 
-                <!-- Language Option (UI Only for demonstration) -->
+                
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Language</p>
@@ -372,7 +372,7 @@
                     </select>
                 </div>
 
-                <!-- Animations Option -->
+                
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Reduce Motion</p>
@@ -391,14 +391,14 @@
         </div>
     </div>
 
-    <!-- Notification Toast -->
+
     <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-card px-5 py-3 rounded-xl shadow-lg border-l-4 border-l-brand-500 flex items-center space-x-3 transition-opacity">
         <i class="fa-solid fa-circle-info text-brand-500"></i>
         <span id="toastMessage" class="text-sm font-medium text-slate-700 dark:text-slate-200">Message sent successfully!</span>
     </div>
 
     <script>
-        // Theme Logic
+        
         function toggleTheme() {
             const html = document.documentElement;
             const isDark = html.classList.toggle('dark');
@@ -430,13 +430,13 @@
             }
         }
 
-        // Motion Toggle Logic
+        
         function toggleMotion() {
             document.body.classList.toggle('reduce-motion');
             showToast(document.body.classList.contains('reduce-motion') ? "Animations disabled." : "Animations enabled.");
         }
 
-        // Generic Toast Function
+     
         function showToast(message) {
             const toast = document.getElementById('toast');
             const msgSpan = document.getElementById('toastMessage');
